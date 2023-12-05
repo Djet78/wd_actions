@@ -7,7 +7,7 @@ from selenium.webdriver.remote.webelement import WebElement
 from selenium.webdriver.support.wait import WebDriverWait
 
 
-class BaseComp:
+class WDActions:
 
     def __init__(self, driver: WebDriver):
         self.driver = driver

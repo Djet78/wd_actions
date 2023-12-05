@@ -1,1 +1,1 @@
-from .base_comp import BaseComp
+from .base_comp import WDActions
