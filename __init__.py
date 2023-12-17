@@ -1,1 +1,1 @@
-from .base_comp import WDActions
+from webdriver_actions import WDActions
