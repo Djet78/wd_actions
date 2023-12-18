@@ -8,7 +8,6 @@ from selenium.webdriver.support.wait import WebDriverWait
 
 
 class WDActions:
-
     def __init__(self, driver: WebDriver):
         self.driver = driver
 
@@ -46,8 +45,10 @@ class WDActions:
         return self
 
     def js_scroll_to(self, xpath) -> Self:
-        self.driver.execute_script(f"""
+        self.driver.execute_script(
+            f"""
         let e = document.evaluate('{xpath}', document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
         e.scrollIntoView();
-        """)
+        """
+        )
         return self
