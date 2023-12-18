@@ -1,4 +1,4 @@
-from typing import Self, Union
+from typing import Self
 
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.by import By
@@ -12,7 +12,7 @@ class WDActions:
     def __init__(self, driver: WebDriver):
         self.driver = driver
 
-    def find_el(self, xpath: str, timeout: int = 1, _all=False, message: str = '') -> Union[WebElement, list[WebElement]]:
+    def find_el(self, xpath: str, timeout: int = 1, _all=False, message: str = '') -> WebElement | list[WebElement]:
         if not _all:
             return WebDriverWait(self.driver, timeout).until(lambda x: x.find_element(By.XPATH, xpath), message=message)
         return WebDriverWait(self.driver, timeout).until(lambda x: x.find_elements(By.XPATH, xpath), message=message)
@@ -47,7 +47,7 @@ class WDActions:
 
     def js_scroll_to(self, xpath) -> Self:
         self.driver.execute_script(f"""
-            let el = document.evaluate('{xpath}', document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
-            el.scrollIntoView();
+        let e = document.evaluate('{xpath}', document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
+        e.scrollIntoView();
         """)
         return self
